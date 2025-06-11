@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>自己紹介</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #f0f0f0;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="content">
+    <!-- コンテンツがここに入る -->
+  </div>
+
+  <button id="langSwitch">言語を切り替える / Switch Language</button>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang');
+
+    const content = {
+      jp: {
+        title: "自己紹介",
+        name: "名前：杉浦 昊翼",
+        message: "こんにちは！神山まるごと高専の学生です。探究活動や映像制作に挑戦しています。"
+      },
+      en: {
+        title: "About Me",
+        name: "Name: Kosuke Sugiura",
+        message: "Hi! I'm a student at Kamiyama Marugoto KOSEN in Japan. I explore various projects including filmmaking and field research."
+      }
+    };
+
+    const currentLang = (lang === 'en') ? 'en' : 'jp';
+    const targetLang = (currentLang === 'jp') ? 'en' : 'jp';
+
+    const container = document.getElementById('content');
+    container.innerHTML = `
+      <h1>${content[currentLang].title}</h1>
+      <p>${content[currentLang].name}</p>
+      <p>${content[currentLang].message}</p>
+    `;
+
+    document.getElementById('langSwitch').addEventListener('click', () => {
+      const newUrl = location.pathname + '?lang=' + targetLang;
+      location.href = newUrl;
+    });
+  </script>
+</body>
+</html>

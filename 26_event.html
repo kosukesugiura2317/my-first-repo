@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>信号機</title>
+  <style>
+    /* 信号機のライト */
+    .light {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 10px;
+      background-color: gray;
+    }
+
+    /* 信号機の外枠（横並び） */
+    .signal {
+      display: flex; /* 横並びにする */
+      justify-content: center; /* 中央に配置 */
+      align-items: center; /* 垂直方向も中央に配置 */
+      background-color: #d3d3d3;
+      border-radius: 30px; /* 角をより丸く */
+      padding: 15px;
+      width: 300px;  /* 信号機全体の幅を調整 */
+      height: 120px; /* 信号機の高さを調整 */
+    }
+
+    /* ボタンのスタイル */
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 横並びの信号機のライトと外枠 -->
+  <div class="signal">
+    <div id="redLight" class="light"></div>
+    <div id="yellowLight" class="light"></div>
+    <div id="greenLight" class="light"></div>
+  </div>
+
+  <!-- ボタン -->
+  <button id="changeButton">信号機を変える</button>
+
+  <script>
+    // ボタンとライトの要素を取得
+    const button = document.getElementById("changeButton");
+    const redLight = document.getElementById("redLight");
+    const yellowLight = document.getElementById("yellowLight");
+    const greenLight = document.getElementById("greenLight");
+
+    // 信号機のライトが変わる順番
+    const lights = [redLight, yellowLight, greenLight];
+    let currentLight = 0;
+
+    // 初期状態で赤色を点灯
+    redLight.style.backgroundColor = "red";
+
+    // ボタンがクリックされた時の処理
+    button.addEventListener("click", () => {
+      // 現在のライトをリセット
+      lights.forEach(light => light.style.backgroundColor = "gray");
+
+      // 次のライトを点灯
+      lights[currentLight].style.backgroundColor = currentLight === 0 ? "red" : (currentLight === 1 ? "yellow" : "green");
+
+      // 次のライトに切り替え
+      currentLight = (currentLight + 1) % 3;
+    });
+  </script>
+
+</body>
+</html>

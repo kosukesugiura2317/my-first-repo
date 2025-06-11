@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ラジオボタン選択表示</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 40px;
+    }
+    #form {
+      font-size: 18px;
+    }
+    p {
+      margin-bottom: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<div id="form">
+  <p id="label">選択されているものは <span id="selectedLabel">ない</span> です</p>
+  <label><input type="radio" name="gender" value="男性"> 男性</label><br>
+  <label><input type="radio" name="gender" value="女性"> 女性</label><br>
+  <label><input type="radio" name="gender" value="その他"> その他</label>
+</div>
+
+<script>
+  const radios = document.querySelectorAll('input[name="gender"]');
+  const selectedLabel = document.getElementById("selectedLabel");
+
+  // 全ラジオボタンにイベントリスナーを設定
+  radios.forEach(radio => {
+    radio.addEventListener("change", () => {
+      const selected = document.querySelector('input[name="gender"]:checked');
+      if (selected) {
+        selectedLabel.textContent = selected.value;
+      } else {
+        selectedLabel.textContent = "ないです";
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

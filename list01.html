@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>タイムライン風リスト</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f0f0f0;
+      padding: 2em;
+    }
+
+    ul.timeline {
+      list-style: none; /* デフォルトの●を非表示に */
+      margin: 0;
+      padding-left: 2em;
+      border-left: 3px solid #ccc;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    ul.timeline li {
+      position: relative;
+      margin-bottom: 2em;
+      padding-left: 1em;
+    }
+
+    ul.timeline li::before {
+      content: "";
+      position: absolute;
+      left: -0.75em;
+      top: 0.3em;
+      width: 1em;
+      height: 1em;
+      background-color: #4CAF50;
+      border-radius: 50%;
+      border: 2px solid white;
+      box-shadow: 0 0 0 2px #4CAF50;
+    }
+
+    ul.timeline li h3 {
+      margin: 0;
+      font-size: 1.1em;
+      color: #333;
+    }
+
+    ul.timeline li p {
+      margin: 0.3em 0 0;
+      color: #666;
+      font-size: 0.95em;
+    }
+  </style>
+</head>
+<body>
+
+<h2>1日のタイムライン</h2>
+
+<ul class="timeline">
+  <li>
+    <h3>08:00 起床</h3>
+    <p>朝ごはんを食べて、身支度を整える。</p>
+  </li>
+  <li>
+    <h3>09:00 通学</h3>
+    <p>自転車で登校。友達と合流。</p>
+  </li>
+  <li>
+    <h3>10:00 授業開始</h3>
+    <p>1時間目はHTML・CSSの実習。</p>
+  </li>
+</ul>
+
+</body>
+</html>

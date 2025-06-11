@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MISEル - ファッションEコマース</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        body {
+            background-color: white;
+        }
+
+        /* Header Styles */
+        .announcement-bar {
+            background-color: #141414;
+            color: white;
+            text-align: center;
+            padding: 7px 53px;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+        }
+
+        .close-button {
+            position: absolute;
+            right: 15px;
+            width: 8.75px;
+            height: 8.75px;
+            cursor: pointer;
+            padding: 0;
+            background: none;
+            border: none;
+            color: white;
+        }
+
+        .header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .menu-button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .logo {
+            width: 64px;
+            height: 65.51px;
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-count {
+            font-size: 18px;
+            color: #141414;
+        }
+
+        /* Hero Section */
+        .hero {
+            width: 100%;
+            height: 550px;
+            background-image: url('https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/main/src/img/top.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 15px;
+        }
+
+        .hero-subtitle {
+            font-size: 15px;
+            color: #858585;
+        }
+
+        .hero-title {
+            font-size: 32px;
+            color: white;
+        }
+
+        .hero-price {
+            font-size: 18px;
+            color: #141414;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .hero-button {
+            width: 220px;
+            height: 35px;
+            background: white;
+            border: 1px solid #141414;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        /* Collections Section */
+        .collections {
+            padding: 20px 10px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 24px;
+            color: #141414;
+            padding: 22px 0;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            position: relative;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .pre-order-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #ffde2d;
+            color: #141414;
+            padding: 0 10px;
+            font-size: 13px;
+            height: 18.5px;
+            line-height: 18.5px;
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .product-brand {
+            font-size: 13px;
+            color: #858585;
+        }
+
+        .product-name {
+            font-size: 13px;
+            color: #141414;
+        }
+
+        .product-price {
+            font-size: 17px;
+            color: #141414;
+        }
+
+        .color-options {
+            display: flex;
+            gap: 4px;
+            padding: 5px 0;
+        }
+
+        .color-option {
+            width: 22px;
+            height: 22px;
+            border-radius: 11px;
+        }
+
+        .color-option.active {
+            border: 1px solid #141414;
+        }
+
+        .size-options {
+            display: flex;
+            gap: 10px;
+            padding: 4px 0;
+        }
+
+        .size-button {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #e5e5e5;
+            background: white;
+            font-size: 13px;
+            color: #858585;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .size-button.active {
+            border-color: #141414;
+            color: #141414;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .quantity-button {
+            width: 35px;
+            height: 35px;
+            border: 1px solid #e5e5e5;
+            background: white;
+            font-size: 13px;
+            color: #141414;
+            cursor: pointer;
+        }
+
+        .quantity-display {
+            width: 62px;
+            height: 35px;
+            background: #f5f5f5;
+            border: 1px solid #e5e5e5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            color: #858585;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            height: 35px;
+            border: 1px solid #141414;
+            background: white;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+
+        /* Category Section */
+        .category-grid {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .category-card {
+            width: 100%;
+            height: 355px;
+            background-color: #c4c4c4;
+            position: relative;
+            border: 1px solid #e5e5e5;
+        }
+
+        .category-name {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 3px 0;
+            text-align: center;
+            font-size: 12px;
+            color: #141414;
+        }
+
+        /* Promo Section */
+        .promo-section {
+            padding: 10px;
+        }
+
+        .promo-card {
+            width: 100%;
+            height: 355px;
+            background-color: #c4c4c4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .promo-tag {
+            font-size: 15px;
+            color: white;
+        }
+
+        .promo-title {
+            font-size: 24px;
+            color: #141414;
+        }
+
+        .promo-subtitle {
+            font-size: 13px;
+            color: #141414;
+        }
+
+        .promo-button {
+            width: 160px;
+            height: 35px;
+            background: #141414;
+            color: white;
+            border: none;
+            font-size: 13px;
+            cursor: pointer;
+            margin-top: auto;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid #e5e5e5;
+            padding: 20px 15px;
+        }
+
+        .newsletter {
+            text-align: center;
+            padding: 25px 0;
+        }
+
+        .newsletter-title {
+            font-size: 15px;
+            color: #141414;
+            margin-bottom: 10px;
+        }
+
+        .newsletter-description {
+            font-size: 15px;
+            color: #858585;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .newsletter-input {
+            width: 100%;
+            height: 35px;
+            background: #f5f5f5;
+            border: 1px solid #e5e5e5;
+            padding: 0 10px;
+            margin-bottom: 15px;
+        }
+
+        .newsletter-button {
+            width: 100%;
+            height: 35px;
+            border: 1px solid #141414;
+            background: white;
+            font-size: 13px;
+            color: #141414;
+            cursor: pointer;
+        }
+
+        .footer-accordion {
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .accordion-button {
+            width: 100%;
+            padding: 10px 15px;
+            text-align: left;
+            background: none;
+            border: none;
+            border-bottom: 1px solid #e5e5e5;
+            font-size: 15px;
+            color: #141414;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-content {
+            padding: 15px;
+            display: none;
+        }
+
+        .accordion-content.active {
+            display: block;
+        }
+
+        .footer-info {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .footer-logo {
+            width: 64px;
+            height: 65.51px;
+            margin-bottom: 10px;
+        }
+
+        .footer-copyright {
+            font-size: 13px;
+            color: #858585;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 9px;
+            margin: 20px 0;
+        }
+
+        .social-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            padding: 20px 0;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .payment-icon {
+            height: 19px;
+        }
+
+        .back-to-top {
+            width: 100%;
+            height: 35px;
+            background: #141414;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .chevron-up {
+            width: 10px;
+            height: 16px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(-135deg);
+            margin-bottom: -4px;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .header-main {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+
+            .hero {
+                height: 400px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="announcement-bar">
+        最終クリアランス:最大20%オフ
+        <button class="close-button">✕</button>
+    </div>
+
+    <header class="header-main">
+        <button class="menu-button">
+            <svg width="25" height="25" viewBox="0 0 25 25" fill="none">
+                <path d="M3.125 12.5H21.875" stroke="#141414" stroke-width="2"/>
+                <path d="M3.125 6.25H21.875" stroke="#141414" stroke-width="2"/>
+                <path d="M3.125 18.75H21.875" stroke="#141414" stroke-width="2"/>
+            </svg>
+        </button>
+
+        <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/main/src/icon/MisellDesktop.svg" alt="MISEル" class="logo">
+
+        <div class="header-icons">
+            <button class="menu-button">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <circle cx="9" cy="9" r="8" stroke="#141414" stroke-width="2"/>
+                    <path d="M15 15L19 19" stroke="#141414" stroke-width="2"/>
+                </svg>
+            </button>
+            <button class="menu-button">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <circle cx="10" cy="6" r="5" stroke="#141414" stroke-width="2"/>
+                    <path d="M1 19C1 15.134 4.134 12 8 12H12C15.866 12 19 15.134 19 19" stroke="#141414" stroke-width="2"/>
+                </svg>
+            </button>
+            <button class="menu-button">
+                <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/main/src/icon/icon-favorite.svg" alt="お気に入り" style="width: 20px; height: 18.12px;">
+            </button>
+            <div style="display: flex; align-items: center; gap: 4px;">
+                <svg width="16.25" height="20" viewBox="0 0 17 20" fill="none">
+                    <path d="M1 1H3L3.5 3M3.5 3H16L12 12H5L3.5 3Z" stroke="#141414" stroke-width="2"/>
+                    <circle cx="6" cy="17" r="2" stroke="#141414" stroke-width="2"/>
+                    <circle cx="11" cy="17" r="2" stroke="#141414" stroke-width="2"/>
+                </svg>
+                <span class="cart-count">(0)</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <p class="hero-subtitle">オンラインショップ限定</p>
+            <h1 class="hero-title">ラストクリアランス</h1>
+            <p class="hero-price">30-80% off</p>
+            <div class="hero-buttons">
+                <button class="hero-button">ウィメンズ</button>
+                <button class="hero-button">メンズ</button>
+            </div>
+        </section>
+
+        <section class="collections">
+            <h2 class="section-title">コレクションズ</h2>
+            <div class="product-grid">
+                <!-- Product Card 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/main/src/img/collections1.jpg" alt="サングラス">
+                        <div class="pre-order-badge">予約注文</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">MISEル</span>
+                        <span class="product-name">サングラス</span>
+                        <span class="product-price">¥10,000</span>
+                    </div>
+                    <div class="color-options">
+                        <div class="color-option active" style="background-color: #191970;"></div>
+                        <div class="color-option" style="background-color: #ffdead;"></div>
+                        <div class="color-option" style="background-color: #fff0f5;"></div>
+                        <div class="color-option" style="background-color: #b8860b;"></div>
+                    </div>
+                    <div class="size-options">
+                        <button class="size-button active">S</button>
+                        <button class="size-button">M</button>
+                        <button class="size-button">XL</button>
+                    </div>
+                    <div class="quantity-control">
+                        <button class="quantity-button">-</button>
+                        <div class="quantity-display">1</div>
+                        <button class="quantity-button">+</button>
+                    </div>
+                    <button class="add-to-cart">
+                        <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/main/src/icon/icon-cart.svg" alt="Cart" style="width: 16px; height: 16px;">
+                        カートに入れる
+                    </button>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/main/src/img/collections2.jpg" alt="ルーズフィットジーンズ">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">MISEル</span>
+                        <span class="product-name">ルーズフィットジーンズ</span>
+                        <span class="product-price">¥40,000</span>
+                    </div>
+                    <div class="color-options">
+                        <div class="color-option active" style="background-color: #191970;"></div>
+                        <div class="color-option" style="background-color: #ffdead;"></div>
+                        <div class="color-option" style="background-color: #fff0f5;"></div>
+                        <div class="color-option" style="background-color: #b8860b;"></div>
+                    </div>
+                    <div class="size-options">
+                        <button class="size-button active">S</button>
+                        <button class="size-button">M</button>
+                        <button class="size-button">XL</button>
+                    </div>
+                    <div class="quantity-control">
+                        <button class="quantity-button">-</button>
+                        <div class="quantity-display">1</div>
+                        <button class="quantity-button">+</button>
+                    </div>
+                    <button class="add-to-cart">
+                        <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/main/src/icon/icon-cart.svg" alt="Cart" style="width: 16px; height: 16px;">
+                        カートに入れる
+                    </button>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/main/src/img/collections3.jpg" alt="ニットウェア">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">MISEル</span>
+                        <span class="product-name">ニットウェア</span>
+                        <span class="product-price">¥30,000</span>
+                    </div>
+                    <div class="color-options">
+                        <div class="color-option active" style="background-color: #191970;"></div>
+                        <div class="color-option" style="background-color: #ffdead;"></div>
+                        <div class="color-option" style="background-color: #fff0f5;"></div>
+                        <div class="color-option" style="background-color: #b8860b;"></div>
+                    </div>
+                    <div class="size-options">
+                        <button class="size-button active">S</button>
+                        <button class="size-button">M</button>
+                        <button class="size-button">XL</button>
+                    </div>
+                    <div class="quantity-control">
+                        <button class="quantity-button">-</button>
+                        <div class="quantity-display">1</div>
+                        <button class="quantity-button">+</button>
+                    </div>
+                    <button class="add-to-cart">
+                        <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/main/src/icon/icon-cart.svg" alt="Cart" style="width: 16px; height: 16px;">
+                        カートに入れる
+                    </button>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/main/src/img/collections4.jpg" alt="ダウンベスト">
+                        <div class="pre-order-badge">予約注文</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">MISEル</span>
+                        <span class="product-name">ダウンベスト</span>
+                        <span class="product-price">¥50,000</span>
+                    </div>
+                    <div class="color-options">
+                        <div class="color-option active" style="background-color: #191970;"></div>
+                        <div class="color-option" style="background-color: #ffdead;"></div>
+                        <div class="color-option" style="background-color: #fff0f5;"></div>
+                        <div class="color-option" style="background-color: #b8860b;"></div>
+                    </div>
+                    <div class="size-options">
+                        <button class="size-button active">S</button>
+                        <button class="size-button">M</button>
+                        <button class="size-button">XL</button>
+                    </div>
+                    <div class="quantity-control">
+                        <button class="quantity-button">-</button>
+                        <div class="quantity-display">1</div>
+                        <button class="quantity-button">+</button>
+                    </div>
+                    <button class="add-to-cart">
+                        <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/main/src/icon/icon-cart.svg" alt="Cart" style="width: 16px; height: 16px;">
+                        カートに入れる
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="category-grid">
+            <div class="category-card">
+                <div class="category-name">ウィメンズ</div>
+            </div>
+            <div class="category-card">
+                <div class="category-name">メンズ</div>
+            </div>
+            <div class="category-card">
+                <div class="category-name">グッズ</div>
+            </div>
+        </section>
+
+        <section class="promo-section">
+            <div class="promo-card">
+                <span class="promo-tag">新着</span>
+                <h2 class="promo-title">選べるカラー</h2>
+                <p class="promo-subtitle">色鮮やかなエッセンシャルスタイル</p>
+                <button class="promo-button">詳細を見る</button>
+            </div>
+            <div class="promo-card">
+                <span class="promo-tag">これらすべてを発見</span>
+                <h2 class="promo-title">コラボレーション</h2>
+                <button class="promo-button">詳細を見る</button>
+            </div>
+        </section>
+
+        <section class="article-section">
+            <div class="article-card">
+                <div class="article-image"></div>
+                <div class="article-content">
+                    <h2 class="article-title">2025春夏コレクション</h2>
+                    <p class="article-text">
+                        そしてジョバンニはすぐうしろの天気輪の柱がいつかぼんやりした三角標の形になって、しばらく蛍ほたるのように、ぺかぺか消えたりともったりしているのを見ました。それはだんだんはっきりして、とうとうりんとうごかないようになり、濃こい鋼青こうせいのそらの野原に
+                    </p>
+                    <div class="article-meta">
+                        <p>2025年 2月 21日に</p>
+                        <p>MISEル太郎が投稿</p>
+                    </div>
+                    <button class="article-button">記事を読む</button>
+                </div>
+            </div>
+            <div class="article-dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="newsletter">
+            <h3 class="newsletter-title">メルマガの購読</h3>
+            <p class="newsletter-description">
+                『MISEル』のメルマガを登録してオトクな情報・最新の情報を受け取ろう!
+            </p>
+            <input type="email" class="newsletter-input" placeholder="メールアドレスを入力してください">
+            <button class="newsletter-button">購読!</button>
+        </div>
+
+        <div class="footer-accordion">
+            <button class="accordion-button">
+                ご注文
+                <span class="chevron-down"></span>
+            </button>
+            <div class="accordion-content">
+                <!-- Content -->
+            </div>
+
+            <button class="accordion-button">
+                フッター情報
+                <span class="chevron-down"></span>
+            </button>
+            <div class="accordion-content">
+                <p style="color: #858585; font-size: 13px; margin-bottom: 20px;">
+                    ご不明な点ございましたらよくある質問をご覧ください。
+                    またはカスタマーサービスまでお問い合わせください。
+                </p>
+                <h4 style="color: #141414; font-size: 15px; margin-bottom: 10px;">
+                    カスタマーサービス
+                </h4>
+                <div style="color: #858585; font-size: 13px; line-height: 18px;">
+                    <p>電話番号: 00-0000-0000</p>
+                    <p>月曜 - 金曜: 9:00 am - 6:00 pm</p>
+                    <p>土曜: 9:00 am - 4:00 pm</p>
+                    <p>日曜: 9:00 am - 2:00 pm</p>
+                    <p>E-mailでのお問い合わせ</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-info">
+            <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/main/src/icon/MisellDesktop.svg" alt="MISEル" class="footer-logo">
+            <p class="footer-copyright">Copyright ©2024, Misell Powered by Shopify</p>
+        </div>
+
+        <div class="social-links">
+            <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/main/src/icon/Icon-facebook.svg" alt="Facebook" class="social-icon">
+            <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/main/src/icon/Icon-x.svg" alt="Twitter" class="social-icon">
+            <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/main/src/icon/Icon-Instagram.svg" alt="Instagram" class="social-icon">
+            <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/main/src/icon/Icon-pinterest.svg" alt="Pinterest" class="social-icon">
+            <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/main/src/icon/Icon-Youtube.svg" alt="YouTube" class="social-icon">
+        </div>
+
+        <div class="payment-methods">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" class="payment-icon">
+        </div>
+
+        <button class="back-to-top">
+            <span class="chevron-up"></span>
+            トップ
+        </button>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        document.querySelectorAll('.accordion-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                content.classList.toggle('active');
+            });
+        });
+
+        // Quantity controls
+        document.querySelectorAll('.quantity-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const display = button.parentElement.querySelector('.quantity-display');
+                let quantity = parseInt(display.textContent);
+                if (button.textContent === '+') {
+                    quantity++;
+                } else if (quantity > 1) {
+                    quantity--;
+                }
+                display.textContent = quantity;
+            });
+        });
+
+        // Size selection
+        document.querySelectorAll('.size-button').forEach(button => {
+            button.addEventListener('click', () => {
+                button.parentElement.querySelectorAll('.size-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                button.classList.add('active');
+            });
+        });
+
+        // Back to top functionality
+        document.querySelector('.back-to-top').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Close announcement bar
+        document.querySelector('.close-button').addEventListener('click', () => {
+            document.querySelector('.announcement-bar').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

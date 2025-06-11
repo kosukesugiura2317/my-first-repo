@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>カラーボックス移動</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+
+    .box {
+      width: 80px;
+      height: 80px;
+      background-color: lightgray;
+      border-radius: 10px;
+      transition: background-color 0.3s;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="box" data-color="#3498db"></div>  <!-- 青 -->
+    <div class="box" data-color="#e67e22"></div>  <!-- オレンジ -->
+    <div class="box" data-color="#2ecc71"></div>  <!-- 緑 -->
+    <div class="box" data-color="#9b59b6"></div>  <!-- 紫 -->
+    <div class="box" data-color="#e74c3c"></div>  <!-- 赤 -->
+  </div>
+
+  <script>
+    const boxes = document.querySelectorAll('.box');
+    let currentIndex = 0;
+
+    // 初期の色を設定
+    function updateBoxColors() {
+      boxes.forEach((box, index) => {
+        box.style.backgroundColor = (index === currentIndex)
+          ? box.dataset.color
+          : 'lightgray';
+      });
+    }
+
+    // 最初に1個目をアクティブに
+    updateBoxColors();
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === "ArrowRight" && currentIndex < boxes.length - 1) {
+        currentIndex++;
+        updateBoxColors();
+      } else if (e.key === "ArrowLeft" && currentIndex > 0) {
+        currentIndex--;
+        updateBoxColors();
+      }
+    });
+  </script>
+
+</body>
+</html>

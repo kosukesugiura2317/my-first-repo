@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>縦並び画像</title>
+  <style>
+    body {
+      margin: 0;
+      height: 300vh;
+      display: flex;
+      justify-content: center;  /* 左右中央揃え */
+      align-items: center;      /* 上下中央揃え */
+      background-color: #f0f0f0;
+    }
+
+    .image-container {
+      display: flex;
+      flex-direction: column; /* ← 縦並びにする */
+      gap: 20px;               /* 画像間のスペース */
+    }
+
+  </style>
+</head>
+<body>
+  <div class="image-container">
+    <img src="https://www.basecamp-jp.com/images/material/BLACKDIAMOND.jpg?timestamp=1535814000&version=1" alt="画像1">
+    <img src="https://logomarket.jp/labo/wp-content/uploads/2021/09/mont-bell-1.png" alt="画像2">
+    <img src="https://www.morgenrote.com/cdn/shop/collections/petzl.jpg?v=1680937190" alt="画像3">
+  </div>
+</body>
+</html>

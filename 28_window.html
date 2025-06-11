@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>スクロール連動ボタン</title>
+  <style>
+    body {
+      height: 2000px;
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    #scrollButton {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 40px 60px;
+      font-size: 24px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="scrollButton">新しいタブを開く</button>
+
+  <script>
+    const button = document.getElementById("scrollButton");
+
+    // スクロールで色を変える
+    window.addEventListener("scroll", () => {
+      const y = window.scrollY;
+
+      if (y < 200) {
+        button.style.backgroundColor = '#007BFF'; // 青
+      } else if (y < 600) {
+        button.style.backgroundColor = '#28a745'; // 緑
+      } else if (y < 1000) {
+        button.style.backgroundColor = '#ffc107'; // 黄
+      } else {
+        button.style.backgroundColor = '#dc3545'; // 赤
+      }
+    });
+
+    // 新しいタブで開く
+    button.addEventListener("click", () => {
+      window.open("https://example.com", "_blank");
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>カード表示フォーム</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 500px;
+      width: 100%;
+    }
+
+    form {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    form label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: bold;
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    form button {
+      margin-top: 20px;
+      width: 100%;
+      background: #007bff;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    form button:hover {
+      background: #0056b3;
+    }
+
+    .card {
+      display: none;
+      background: white;
+      border-left: 6px solid #007bff;
+      border-radius: 10px;
+      padding: 20px 20px 20px 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .card::before {
+      content: "📝";
+      font-size: 24px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .card p {
+      color: #555;
+      font-size: 16px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <form id="infoForm">
+      <label for="name">名前</label>
+      <input type="text" id="name" placeholder="例：佐藤 太郎" required />
+
+      <label for="message">メッセージ</label>
+      <textarea id="message" rows="5" placeholder="ご自由にご記入ください" required></textarea>
+
+      <button type="submit">カードを作成</button>
+    </form>
+
+    <div class="card" id="card">
+      <h3 id="cardName"></h3>
+      <p id="cardMessage"></p>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('infoForm');
+    const card = document.getElementById('card');
+    const cardName = document.getElementById('cardName');
+    const cardMessage = document.getElementById('cardMessage');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (name && message) {
+        cardName.textContent = name;
+        cardMessage.textContent = message;
+        card.style.display = 'block';
+        form.reset();
+      }
+    });
+  </script>
+
+</body>
+</html>

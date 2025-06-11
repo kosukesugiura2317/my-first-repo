@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>カード型レイアウト</title>
+  <style>
+    /* === モバイルファーストの基本スタイル === */
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      padding: 16px;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 4px;
+    }
+
+    .card h2 {
+      font-size: 18px;
+      margin: 12px 0 8px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 12px;
+      background: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    @media (min-width: 600px) {
+      .card-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 900px) {
+      .card-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-container">
+    <div class="card">
+        <img src="https://b-bunshun.ismcdn.jp/mwimgs/2/d/480/img_2d1e7b7901ee766540b202f7ffef99cb18824.jpg" alt="旅をする木の表紙">
+      <h2>旅をする木</h2>
+      <p>これは記事の簡単な説明文です。続きが気になったらボタンをクリック！</p>
+      <a href="#">続きを読む</a>
+    </div>
+
+    <div class="card">
+        <img src="https://ogre.natalie.mu/media/ex/film/145085/flyer_1.jpg?imwidth=640&imdensity=1" alt="ダ・ヴィンチ・コードの表紙">
+      <h2>ダ・ヴィンチ・コード</h2>
+      <p>テキストは自由にカスタマイズ可能です。写真と合わせて魅力的に。</p>
+      <a href="#">続きを読む</a>
+    </div>
+
+    <div class="card">
+        <img src="https://m.media-amazon.com/images/I/61bkbs13i2L._AC_UF1000,1000_QL80_.jpg" alt="風をつかまえた少年の表紙">
+      <h2>風邪を捕まえた少年</h2>
+      <p>画面サイズによって、カードの並びが変わります。試してみて！</p>
+      <a href="#">続きを読む</a>
+    </div>
+  </div>
+
+</body>
+</html>

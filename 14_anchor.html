@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>世界地図リンク</title>
+  <style>
+    .map-container {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .world-map {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .label {
+      position: absolute;
+      font-size: 14px;
+      font-weight: bold;
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 2px 4px;
+      border-radius: 4px;
+      text-decoration: none;
+      color: #007acc;
+    }
+
+    .label:hover {
+      background-color: #e0f0ff;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align:center;">世界地図（クリックでWikipediaにアクセス）</h2>
+
+  <div class="map-container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Worldmap-blank.svg" alt="世界地図" class="world-map">
+
+    <!-- 国名ラベル -->
+    <a href="https://ja.wikipedia.org/wiki/日本" class="label" style="top: 180px; left: 780px;" target="_blank" rel="noopener noreferrer ">日本</a>
+    <a href="https://ja.wikipedia.org/wiki/アメリカ合衆国" class="label" style="top: 170px; left: 160px;" target="_blank" rel="noopener ">アメリカ</a>
+    <a href="https://ja.wikipedia.org/wiki/ブラジル" class="label" style="top: 310px; left: 270px;" target="_blank" rel="noopener">ブラジル</a>
+    <a href="https://ja.wikipedia.org/wiki/イギリス" class="label" style="top: 140px; left: 390px;" target="_blank" rel="noopener">イギリス</a>
+    <a href="https://ja.wikipedia.org/wiki/オーストラリア" class="label" style="top: 400px; left: 850px;" target="_blank" rel="noopener">オーストラリア</a>
+    <a href="https://ja.wikipedia.org/wiki/インド" class="label" style="top: 250px; left: 670px;" target="_blank" rel="noopener">インド</a>
+    <a href="https://ja.wikipedia.org/wiki/ルワンダ" class="label" style="top: 250px; left: 500px;" target="_blank" rel="noopener">ルワンダ</a>
+  </div>
+</body>
+</html>
